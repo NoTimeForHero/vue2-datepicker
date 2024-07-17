@@ -85,7 +85,7 @@ export default {
         date: startOfDay,
       };
       const start = map[this.type] || map.date;
-      return value.filter(isValidDate).map(v => start(v));
+      return value.filter(isValidDate).map((v) => start(v));
     },
     calendarYear() {
       return this.innerCalendar.getFullYear();
@@ -183,7 +183,7 @@ export default {
         classes.push('not-current-month');
       }
       const state = this.getStateClass(cellDate);
-      if (!(state === 'active' && notCurrentMonth)) {
+      if (state === 'active') {
         classes.push(state);
       }
       return classes.concat(this.getClasses(cellDate, this.innerValue, classes.join(' ')));
@@ -224,7 +224,7 @@ export default {
       if (this.isDisabled(cellDate)) {
         return 'disabled';
       }
-      if (this.innerValue.some(v => v.getTime() === cellDate.getTime())) {
+      if (this.innerValue.some((v) => v.getTime() === cellDate.getTime())) {
         return 'active';
       }
       return '';
@@ -233,7 +233,7 @@ export default {
       if (this.type !== 'week') return '';
       const start = row[0].getTime();
       const end = row[6].getTime();
-      const active = this.innerValue.some(v => {
+      const active = this.innerValue.some((v) => {
         const time = v.getTime();
         return time >= start && time <= end;
       });

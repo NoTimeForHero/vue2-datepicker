@@ -114,15 +114,16 @@ export default {
     getRangeClasses(cellDate, currentDates, classnames) {
       const classes = [].concat(this.getClasses(cellDate, currentDates, classnames));
 
-      if (/disabled|active/.test(classnames)) return classes;
+      // if (/disabled|active/.test(classnames)) return classes;
+      if (/disabled/.test(classnames)) return classes;
 
-      const inRange = (data, range, fn = v => v.getTime()) => {
+      const inRange = (data, range, fn = (v) => v.getTime()) => {
         const value = fn(data);
         let [min, max] = range.map(fn);
         if (min > max) {
           [min, max] = [max, min];
         }
-        return value > min && value < max;
+        return value >= min && value <= max;
       };
       if (currentDates.length === 2 && inRange(cellDate, currentDates)) {
         return classes.concat('in-range');

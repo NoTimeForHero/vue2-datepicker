@@ -2,19 +2,36 @@
   <div class="box">
     <section>
       <p>date range</p>
-      <date-picker v-model="value1" type="date" range placeholder="Select date range"></date-picker>
+      <date-picker
+        v-model="value1"
+        class="simple"
+        type="date"
+        range
+        inline
+        placeholder="Select date range"
+      >
+      </date-picker>
     </section>
     <section>
       <p>datetime range</p>
       <date-picker
         v-model="value2"
         type="datetime"
-        range
+        :range="true"
+        :inline="true"
         placeholder="Select datetime range"
       ></date-picker>
     </section>
   </div>
 </template>
+
+<style>
+.simple {
+  .mx-calendar:last-child {
+    display: none;
+  }
+}
+</style>
 
 <script>
 export default {
