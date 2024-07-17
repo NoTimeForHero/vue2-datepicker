@@ -2198,9 +2198,8 @@ var CalendarPanel = {
         classes.push('not-current-month');
       }
       var state = this.getStateClass(cellDate);
-      if (state === 'active') {
-        classes.push(state);
-      }
+      // if (!(state === 'active' && notCurrentMonth))
+      classes.push(state);
       return classes.concat(this.getClasses(cellDate, this.innerValue, classes.join(' ')));
     },
     getMonthClasses: function getMonthClasses(month) {

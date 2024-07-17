@@ -13,6 +13,19 @@
       </date-picker>
     </section>
     <section>
+      <p>disabled yestarday</p>
+      <date-picker
+        v-model="value1"
+        class="simple"
+        type="date"
+        range
+        inline
+        :disabled-date="disabledDates"
+        placeholder="Select date range"
+      >
+      </date-picker>
+    </section>
+    <section>
       <p>datetime range</p>
       <date-picker
         v-model="value2"
@@ -41,6 +54,16 @@ export default {
       value1: [new Date(2019, 9, 8), new Date(2019, 9, 19)],
       value2: [],
     };
+  },
+  methods: {
+    disabledDates(date) {
+      const newDate = new Date();
+      newDate.setDate(newDate.getDate() - 1);
+      if (newDate <= date) {
+        return false;
+      }
+      return true;
+    },
   },
 };
 </script>

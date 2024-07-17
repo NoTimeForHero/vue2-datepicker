@@ -264,6 +264,11 @@
       color: #ccc;
       background: none; // cover the in-range style
     }
+    &.disabled {
+      cursor: not-allowed;
+      color: $disabled-color;
+      background-color: $disabled-background-color;      
+    }
     &.in-range,
     &.hover-in-range {
       color: $calendar-in-range-color;
