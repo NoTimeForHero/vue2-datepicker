@@ -118,7 +118,7 @@ describe('CalendarPanel', () => {
     }
   });
 
-  ['date', 'month'].forEach(type => {
+  ['date', 'month'].forEach((type) => {
     it(`feat: click prev/next year in ${type} panel`, async () => {
       wrapper = mount(CalendarPanel, {
         propsData: {
@@ -156,7 +156,7 @@ describe('CalendarPanel', () => {
     expect(wrapper.vm.calendarYear).toBe(2008);
   });
 
-  const renderType = type => {
+  const renderType = (type) => {
     it(`prop: type=${type}`, () => {
       wrapper = shallowMount(CalendarPanel, {
         propsData: {
@@ -183,8 +183,8 @@ describe('CalendarPanel', () => {
   });
 
   it('prop: disabledDate', () => {
-    const disabledDate = date => {
-      return date < new Date(2019, 9, 1) || date > new Date(2019, 9, 20);
+    const disabledDate = (date) => {
+      return date <= new Date(2019, 9, 1) || date >= new Date(2019, 9, 20);
     };
     wrapper = mount(CalendarPanel, {
       propsData: {
@@ -214,10 +214,7 @@ describe('CalendarPanel', () => {
         defaultPanel: 'year',
       },
     });
-    wrapper
-      .findAll('.mx-table-year td > div')
-      .at(0)
-      .trigger('click');
+    wrapper.findAll('.mx-table-year td > div').at(0).trigger('click');
     expect(wrapper.emitted().select[0][0]).toEqual(new Date(2010, 9, 4));
     await wrapper.setProps({ value: new Date(2010, 9, 4) });
     wrapper.find('.mx-table-month td > div').trigger('click');

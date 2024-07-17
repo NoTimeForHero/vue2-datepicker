@@ -1,14 +1,10 @@
 .vscode
 .cache
-
 _site
-
 node_modules
 
+# For install from GitHub
 /dist
-
-/locale
-
-/index.*
-
-/scss
+!/index.*
+!/locale
+!/scss
